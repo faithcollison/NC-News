@@ -19,5 +19,60 @@
 }
 
 .article-list-container {
-  border: 5px solid pink
+  border: 5px solid pink;
+}
+.article-list{
+  list-style-type:none;
+}
+.article-item-container {
+  margin:20px;
+  border: 5px solid rgb(196, 64, 86);
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: rgb(227, 222, 222);
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+}
+.article-content{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.article-text{
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.article-img-url{
+  max-width: 40%;
+  max-height: auto;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .article-item-container {
+    flex-direction: row;
+  } 
+
+  .article-content {
+    flex-direction: row; 
+  }
+
+  .article-text {
+    text-align: left; 
+  }
+
+  .article-img-url {
+    margin-top: 0; 
+    margin-left: auto;
+  }
+}
+.article-author{
+  font-style: italic;
+  margin: 20px;
+  text-align: center;
 }

@@ -32,11 +32,13 @@ const ArticleList = () => {
 
         <div className="article-list-container">
            <ArticleFilter />
-           {articles.map((article) => {
+           <ul className="article-list">
+            {articles.map((article) => {
             return (
-                <ArticleItem key={article.article_id} article={article} />
+                <li key={article.article_id}> <ArticleItem article={article} /> </li>
             )
            })}
+           </ul>
         </div>
     )
     
