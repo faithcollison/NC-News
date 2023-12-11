@@ -1,4 +1,5 @@
 import { useState, useEffect} from "react"
+import { Link } from "react-router-dom"
 import { getArticles } from "../api"
 import ArticleFilter from "./ArticleFilter"
 import ArticleItem from "./ArticleItem"
@@ -29,16 +30,15 @@ const ArticleList = () => {
         return <p> Woopsie, there's been an error! </p>
     }
     return (
-
         <div className="article-list-container">
            <ArticleFilter />
-           <ul className="article-list">
             {articles.map((article) => {
-            return (
-                <li key={article.article_id}> <ArticleItem article={article} /> </li>
-            )
+                return (
+                <Link key={article.article_id} to={`/articles/${article.article_id}`}>
+                    <ArticleItem key={article.article_id} article={article} /> 
+                </Link>
+                )
            })}
-           </ul>
         </div>
     )
     
