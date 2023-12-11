@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getArticleComments } from "../api"
 import { useParams } from "react-router-dom"
+import CommentItem from "./CommentItem"
 
 const CommentList = () => {
 
@@ -15,11 +16,11 @@ const CommentList = () => {
     }, [comments])
 
     return (
-        <div>
-            <ul>
+        <div className="comment-container">
+            <ul className="comment-list">
                 {comments.map((comment) => {
                     return (
-                        <CommentItem key={comment.comment_id} comment={comment}/>
+                        <li className="comment-item" key={comment.comment_id}><CommentItem key={comment.comment_id} comment={comment}/> </li>
                     )
                 })}
             </ul>
