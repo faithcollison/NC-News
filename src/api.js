@@ -9,3 +9,12 @@ export function getArticles() {
         return res.data
     })
 }
+
+export function getArticleComments(id) {
+    
+    return api
+    .get(`/articles/${id}/comments`)
+    .then((res) => {
+        return res.data
+    })
+}
