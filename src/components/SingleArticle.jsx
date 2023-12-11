@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticleById } from "../api"
+import { Link } from "react-router-dom"
 
 const SingleArticle = () => {
     const [article, setArticle] = useState({})
@@ -20,6 +21,8 @@ const SingleArticle = () => {
             <img className="single-article-img" src={article.article_img_url} />
             <p> Votes: {article.votes} </p>
             <p> Comments: {article.comment_count} </p>
+            <Link to={`/articles/${article.article_id}/comments`}> Click for comments
+            </Link>
         </div>
     )
 }
