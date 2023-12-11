@@ -4,3 +4,20 @@
   padding: 2rem;
   text-align: center;
 }
+
+.header {
+  border: 5px solid blue;
+}
+.nav-bar {
+  border: 5px solid green;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+.home-container {
+  border: 5px solid yellow;
+}
+
+.article-list-container {
+  border: 5px solid pink
+}
