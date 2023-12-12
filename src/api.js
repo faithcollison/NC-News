@@ -26,11 +26,3 @@ export function getArticleComments(id) {
         return res.data
     })
 }
-
-export function getArticleById(id) {
-    return api
-    .get(`/articles/${id}`)
-    .then((res) => {
-        return res.data
-    })
-}
