@@ -140,3 +140,16 @@
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(192, 231, 255);
 }
+
+.user-list{
+list-style-type: none;
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: space-evenly;
+}
+.avatar-photo{
+  margin:20px;
+  width: 20vw;
+ height:15vh;
+}

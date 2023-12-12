@@ -47,3 +47,11 @@ export function decrVoteCount(id) {
         return res.data.article
     })
 }
+
+export function getUsers() {
+    return api
+    .get(`/users`)
+    .then((res) => {
+        return res.data.users
+    })
+} 
