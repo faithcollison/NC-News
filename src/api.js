@@ -19,10 +19,31 @@ export function getArticleById(id) {
 }
 
 export function getArticleComments(id) {
-    
     return api
     .get(`/articles/${id}/comments`)
     .then((res) => {
         return res.data
+    })
+}
+
+export function incrVoteCount(id) {
+    const patchBody = {
+        inc_votes: 1
+    }
+    return api
+    .patch(`/articles/${id}`, patchBody)
+    .then((res) => {
+        return res.data.article
+    })
+}
+
+export function decrVoteCount(id) {
+    const patchBody = {
+        inc_votes: -1
+    }
+    return api
+    .patch(`/articles/${id}`, patchBody)
+    .then((res) => {
+        return res.data.article
     })
 }
