@@ -17,3 +17,20 @@ export function getArticleById(id) {
         return res.data
     })
 }
+
+export function getArticleComments(id) {
+    
+    return api
+    .get(`/articles/${id}/comments`)
+    .then((res) => {
+        return res.data
+    })
+}
+
+export function getArticleById(id) {
+    return api
+    .get(`/articles/${id}`)
+    .then((res) => {
+        return res.data
+    })
+}

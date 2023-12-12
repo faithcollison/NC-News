@@ -4,7 +4,8 @@ import ArticleList from './components/ArticleList'
 import SingleArticle from './components/SingleArticle'
 import Header from './components/Header'
 import Nav from './components/Nav'
-import Home from './components/Home'
+import CommentList from './components/CommentList'
+import SingleArticle from './components/SingleArticle'
 
 function App() {
  return (
@@ -12,9 +13,9 @@ function App() {
         <Header />
         <Nav />
         <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/articles" element={<ArticleList />}/>
             <Route path="/articles/:article_id" element={<SingleArticle />} />
+            <Route path="/articles/:article_id/comments" element={<CommentList />} />
         </Routes>
         
         
