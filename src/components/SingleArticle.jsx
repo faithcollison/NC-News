@@ -10,14 +10,15 @@ const SingleArticle = () => {
     const [comments, setComments] = useState([])
     const [votes, setVotes] = useState(0)
     const {article_id} = useParams()
-    
+   
 
     useEffect(() => {
         getArticleById(article_id)
         .then((data) => {
             setArticle(data.article)
+            setVotes(data.article.votes)
         })
-    }, [votes])
+    }, [])
     
     useEffect(() => {
         getArticleComments(article_id)
@@ -54,7 +55,7 @@ const SingleArticle = () => {
             <img className="single-article-img" src={article.article_img_url} />
             <p className="single-article-text"> Written by {article.author} </p>
             <p> Created at {dateStr} </p>
-            <p> {article.votes} Votes </p>
+            <p> {votes} Votes </p>
             <button className="like-vote-button" onClick={() => upVote(article.article_id)}> Like </button>
             <button className="dislike-vote-button" onClick={() => downVote(article.article_id)}> Dislike </button>
             <p> {article.comment_count} Comments </p>
