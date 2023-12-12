@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { getArticleById } from "../api"
-import { Link } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import Collapsible from "./Collapsible"
 import CommentList from "./CommentList"
-import { getArticleComments } from "../api"
+import { incrVoteCount, decrVoteCount, getArticleComments, getArticleById } from "../api"
+
 import CommentAdder from "./CommentAdder"
 
 const SingleArticle = () => {
     const [article, setArticle] = useState({})
     const [comments, setComments] = useState([])
+    const [votes, setVotes] = useState(0)
     const {article_id} = useParams()
-    
+   
+
     useEffect(() => {
         getArticleById(article_id)
         .then((data) => {
             setArticle(data.article)
+            setVotes(data.article.votes)
         })
     }, [])
     
@@ -25,10 +27,26 @@ const SingleArticle = () => {
             setComments(data.comments)
         })
     }, [])
-    
+
+    const upVote = (article_id) => {
+        setVotes((prevVotes) => prevVotes + 1)
+        incrVoteCount(article_id)
+        .catch((err) => {
+            setVotes((prevVotes) => prevVotes - 1)
+            console.log("Request failed")
+        })
+    }
+    const downVote = (article_id) => {
+        setVotes((prevVotes) => prevVotes - 1)
+        decrVoteCount(article_id)
+        .catch((err) => {
+            setVotes((prevVotes) => prevVotes + 1)
+            console.log("Request failed")
+        })
+    }
+
     const date = new Date(article.created_at).toString()
     const dateStr = date.replace(/\sGMT.*/, "")
-    
     
     return (
         <div className="single-article-container">
@@ -38,7 +56,9 @@ const SingleArticle = () => {
             <img className="single-article-img" src={article.article_img_url} />
             <p className="single-article-text"> Written by {article.author} </p>
             <p> Created at {dateStr} </p>
-            <p> {article.votes} Votes </p>
+            <p> {votes} Votes </p>
+            <button className="like-vote-button" onClick={() => upVote(article.article_id)}> Like </button>
+            <button className="dislike-vote-button" onClick={() => downVote(article.article_id)}> Dislike </button>
             <p> {article.comment_count} Comments </p>
             <CommentAdder article_id={article.article_id} setComments={setComments}/>
             <Collapsible descriptor="Comments" comments={comments}>

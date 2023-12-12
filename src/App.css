@@ -150,3 +150,22 @@
 .error {
   border: 3px solid red
 }
+
+.like-vote-button {
+  margin: 10px;
+  padding: 5px;
+  width: 60px;
+  height: 30px;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: pink;
+}
+.dislike-vote-button {
+  margin: 10px;
+  padding: 5px;
+  width: 60px;
+  height: 30px;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(192, 231, 255);
+}
