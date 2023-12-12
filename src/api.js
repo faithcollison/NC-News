@@ -10,6 +10,14 @@ export function getArticles() {
     })
 }
 
+export function getArticleById(id) {
+    return api
+    .get(`/articles/${id}`)
+    .then((res) => {
+        return res.data
+    })
+}
+
 export function getArticleComments(id) {
     
     return api

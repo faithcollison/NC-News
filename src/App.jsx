@@ -1,6 +1,7 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import ArticleList from './components/ArticleList'
+import SingleArticle from './components/SingleArticle'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import CommentList from './components/CommentList'
@@ -21,5 +22,6 @@ function App() {
     </div>
  )
 }
+
 
 export default App
