@@ -28,9 +28,10 @@ export function getArticleComments(id) {
 }
 
 export function postComment(id, newCommentText) {
+    console.log(newCommentText, id)
     const postBody = {
         body: newCommentText,
-        username: "faith"
+        username: "jessjelly"
     }
     console.log(postBody)
     return api

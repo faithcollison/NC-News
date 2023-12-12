@@ -8,7 +8,6 @@ const CommentAdder = ({setComments, article_id}) => {
         event.preventDefault();
         postComment(article_id, newComment)
         .then((newCommentFromApi) => {
-            console.log(newCommentFromApi)
             setNewComment("")
             setComments((currComments) => {
                 return [newCommentFromApi, ...currComments]
@@ -17,13 +16,15 @@ const CommentAdder = ({setComments, article_id}) => {
     }
 
     return (
-        <form className="comment-adder" onSubmit={handleSubmit}>
+        <div className="comment-adder">
+        <form  onSubmit={handleSubmit}>
             <label htmlFor="newComment"> Add a comment </label>
-            <textarea id="newComment" multiline="true" value={newComment} onChange={(event) => setNewComment(event.target.value)}></textarea>
-            <button>
+            <textarea className="comment-text-box" id="newComment" multiline="true" value={newComment} onChange={(event) => setNewComment(event.target.value)}></textarea>
+            <button className="comment-adder-button">
                 Add
             </button>
         </form>
+        </div>
     )
 }
 export default CommentAdder;
