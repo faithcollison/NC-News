@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import Collapsible from "./Collapsible"
 import CommentList from "./CommentList"
 import { getArticleComments } from "../api"
+import CommentAdder from "./CommentAdder"
 
 const SingleArticle = () => {
     const [article, setArticle] = useState({})
@@ -39,6 +40,7 @@ const SingleArticle = () => {
             <p> Created at {dateStr} </p>
             <p> {article.votes} Votes </p>
             <p> {article.comment_count} Comments </p>
+            <CommentAdder article_id={article.article_id} setComments={setComments}/>
             <Collapsible descriptor="Comments" comments={comments}>
                 <CommentList comments={comments}/>
             </Collapsible>

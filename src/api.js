@@ -26,3 +26,16 @@ export function getArticleComments(id) {
         return res.data
     })
 }
+
+export function postComment(id, newCommentText) {
+    const postBody = {
+        body: newCommentText,
+        username: "faith"
+    }
+    console.log(postBody)
+    return api
+    .post(`/articles/${id}/comments`, postBody)
+    .then((res) => {
+        return res.data.comment
+    })
+}
