@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getArticleComments } from "../api"
 import { useParams } from "react-router-dom"
 import CommentItem from "./CommentItem"
+import { Link } from "react-router-dom"
 
 const CommentList = () => {
 

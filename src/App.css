@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-around;
   margin: 10px 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .home-container {
   border: 5px solid yellow;
@@ -45,6 +46,9 @@
   font-size: 20px;
   padding: 10px;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color:black;
 }
 .article-img-url{
   max-width: 40%;
@@ -60,6 +64,7 @@
 
   .article-content {
     flex-direction: row; 
+    
   }
 
   .article-text {
@@ -75,6 +80,9 @@
   font-style: italic;
   margin: 20px;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color:black;
 }
 
 .comment-list{
@@ -90,3 +98,4 @@
 .comment-container{
   width:100%;
 }
+
