@@ -46,7 +46,7 @@ const CommentAdder = ({setComments, article_id}) => {
                 Add
             </button>
             { success ? "✅" : ""}
-            { fail ? "Please try again" : ""}
+            { fail ? "Please enter a comment" : ""}
         </form>
         </div>
     )
