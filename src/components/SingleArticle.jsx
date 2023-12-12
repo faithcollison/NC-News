@@ -25,13 +25,18 @@ const SingleArticle = () => {
         })
     }, [])
     
+    const date = new Date(article.created_at).toString()
+    const dateStr = date.replace(/\sGMT.*/, "")
+    
+    
     return (
         <div className="single-article-container">
             <Link className="navigation-link "to="/articles"> Back to all articles </Link>
             <h2 className="single-article-text"> {article.title} </h2>
-            <p className="single-article-text"> Written by: {article.author} </p>
             <p className="single-article-text"> {article.body} </p>
             <img className="single-article-img" src={article.article_img_url} />
+            <p className="single-article-text"> Written by {article.author} </p>
+            <p> Created at {dateStr} </p>
             <p> {article.votes} Votes </p>
             <p> {article.comment_count} Comments </p>
             <Collapsible descriptor="Comments" comments={comments}>
