@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<ArticleList />}/>
             <Route path="/articles/:article_id" element={<SingleArticle />} />
-            <Route path="/articles/:article_id/comments" element={<CommentList />} />
+            {/* <Route path="/articles/:article_id/comments" element={<CommentList />} /> */}
         </Routes>
         
         
