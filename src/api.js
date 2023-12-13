@@ -10,11 +10,11 @@ export function getTopics() {
     })
 }
 
-export function getArticles(topic) {
+export function getArticles(filter) {
     return api
     .get(`/articles`,{
         params: {
-            topic: topic
+            topic: filter
         }
     })
     .then((res) => {

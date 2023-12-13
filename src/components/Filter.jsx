@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "../api"
+import { Link } from "react-router-dom";
 
 const Filter = ({setFilter}) => {
     const [topics, setTopics] = useState([])
@@ -26,9 +27,11 @@ const Filter = ({setFilter}) => {
         <div className="filter-bar">
             <ul>
             {topics.map((topic) => 
-                <li className="filter-bar-item" key={topic} > <button className="filter-button" onClick={(() => handleTopicSelect(topic))}> {topic} </button> </li>
+            <Link key={topic} to={`/articles?topic=${topic}`}> <li className="filter-bar-item" key={topic} > <button className="filter-button" onClick={(() => handleTopicSelect(topic))}> {topic} </button> </li> </Link>
+                
                 )}
-                <li className="filter-bar-item" > <button className="filter-button" onClick={(() => handleTopicSelect())}> No Filter </button> </li>
+            <Link to={`/articles`}><li className="filter-bar-item" > <button className="filter-button" onClick={(() => handleTopicSelect())}> No Filter </button> </li>
+            </Link>
     
 
             </ul>

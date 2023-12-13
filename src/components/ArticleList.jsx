@@ -10,10 +10,11 @@ const ArticleList = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
 
+    const queryTopic = filter || new URLSearchParams(location.search).get('topic')
+    
     useEffect(() => {
-        getArticles(filter)
+        getArticles(queryTopic)
         .then(({articles}) => {
-            console.log(articles.length)
             setArticles(articles)
             setIsLoading(false)
         })
@@ -24,11 +25,13 @@ const ArticleList = () => {
         })
     }, [filter])
 
+   
+
     if(isLoading){
         return <h2> Loading... </h2>
     }
     if(isError) {
-        return <p> Woopsie, there's been an error! </p>
+        return <p> Oh no, there's been an error! Please try again </p>
     }
   
     return (
