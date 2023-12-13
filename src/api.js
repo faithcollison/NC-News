@@ -47,6 +47,17 @@ export function decrVoteCount(id) {
         return res.data.article
     })
 }
+export function postComment(id, newCommentText) {
+    const postBody = {
+        body: newCommentText,
+        username: "jessjelly"
+    }
+    return api
+    .post(`/articles/${id}/comments`, postBody)
+    .then((res) => {
+        return res.data.comment
+    })
+}
 
 export function getUsers() {
     return api

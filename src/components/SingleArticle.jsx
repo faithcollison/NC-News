@@ -4,6 +4,7 @@ import Collapsible from "./Collapsible"
 import CommentList from "./CommentList"
 import { incrVoteCount, decrVoteCount, getArticleComments, getArticleById } from "../api"
 
+import CommentAdder from "./CommentAdder"
 
 const SingleArticle = () => {
     const [article, setArticle] = useState({})
@@ -59,6 +60,7 @@ const SingleArticle = () => {
             <button className="like-vote-button" onClick={() => upVote(article.article_id)}> Like </button>
             <button className="dislike-vote-button" onClick={() => downVote(article.article_id)}> Dislike </button>
             <p> {article.comment_count} Comments </p>
+            <CommentAdder article_id={article.article_id} setComments={setComments}/>
             <Collapsible descriptor="Comments" comments={comments}>
                 <CommentList article={article} setComments={setComments} comments={comments}/>
             </Collapsible>
