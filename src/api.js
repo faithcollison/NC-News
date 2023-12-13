@@ -55,3 +55,11 @@ export function getUsers() {
         return res.data.users
     })
 } 
+
+export function deleteComment (id) {
+    return api
+    .delete(`/comments/${id}`)
+    .then((res) => {
+        return res.data.comment
+    })
+}
