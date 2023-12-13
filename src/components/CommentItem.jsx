@@ -5,25 +5,30 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const CommentItem = ({article, comment, setComments}) => {
+const CommentItem = ({article, comment, setComments, comments}) => {
     const {user} = useContext(UserContext)
     
     const handleDelete = (id) => {
         deleteComment(id)
-        setComments((currComments) => {
-            const updatedCommentList = currComments.filter((comment) => comment.comment_id !== id);
-            article.comment_count -= 1;
-            toast.success("Your comment has been deleted", {
-                position: toast.POSITION.TOP_CENTER,
-              });
-            return updatedCommentList
+        .then(() => {
+            setComments((currComments) => {
+                const updatedCommentList = currComments.filter((comment) => comment.comment_id !== id);
+                article.comment_count -= 1;
+                toast.success("Your comment has been deleted", {
+                    position: toast.POSITION.TOP_CENTER,
+                  });
+                return updatedCommentList
+            })
         })
         .catch((err )=> {
-            toast.error("Message was not successfully deleted, please try again", {
-                position: toast.POSITION.TOP_CENTER,
-              });
             console.log(err)
+            setComments((currComments) => {
+                toast.error("Message was not successfully deleted, please try again", {
+                    position: toast.POSITION.TOP_LEFT,
+                  })
+                return currComments})
         })
+        
     }
     return (
         <div>
