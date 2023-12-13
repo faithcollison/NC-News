@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 import { deleteComment } from "../api";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -17,6 +17,12 @@ const CommentItem = ({article, comment, setComments}) => {
                 position: toast.POSITION.TOP_CENTER,
               });
             return updatedCommentList
+        })
+        .catch((err )=> {
+            toast.error("Message was not successfully deleted, please try again", {
+                position: toast.POSITION.TOP_CENTER,
+              });
+            console.log(err)
         })
     }
     return (
