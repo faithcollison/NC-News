@@ -3,17 +3,24 @@ import { Link } from "react-router-dom"
 import { getArticles } from "../api"
 import ArticleFilter from "./ArticleFilter"
 import ArticleItem from "./ArticleItem"
+import SortArticles from "./SortArticles"
 
 const ArticleList = () => {
     // const [filter, setFilter] = useState("")
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
-
+    const [sortBy, setSortBy] = useState("")
+    
     useEffect(() => {
-        getArticles()
-        .then(({articles}) => {
-            setArticles(articles)
+        // console.log(sortBy)
+        getArticles(sortBy)
+        .then(({articles}) => {   
+            const commentCountAsNumber = articles.map((article) =>{
+                        const countToNum = Number(article.comment_count)
+                        return ({...article, comment_count : countToNum })
+                    } )
+            setArticles(commentCountAsNumber)
             setIsLoading(false)
         })
         .catch((err) => {
@@ -21,7 +28,7 @@ const ArticleList = () => {
             setIsError(true)
             setIsLoading(false)
         })
-    }, [])
+    }, [sortBy])
 
     if(isLoading){
         return <h2> Loading... </h2>
@@ -32,6 +39,7 @@ const ArticleList = () => {
     return (
         <div className="article-list-container">
            <ArticleFilter />
+           <SortArticles setArticles={setArticles} articles={articles} setSortBy={setSortBy} />
             {articles.map((article) => {
                 return (
                 <Link key={article.article_id} to={`/articles/${article.article_id}`}>
