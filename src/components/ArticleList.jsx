@@ -1,17 +1,19 @@
 import { useState, useEffect} from "react"
 import { Link } from "react-router-dom"
 import { getArticles } from "../api"
-import ArticleFilter from "./ArticleFilter"
+import Filter from "./Filter"
 import ArticleItem from "./ArticleItem"
 
 const ArticleList = () => {
-    // const [filter, setFilter] = useState("")
+    const [filter, setFilter] = useState("")
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
 
+    const queryTopic = filter || new URLSearchParams(location.search).get('topic')
+    
     useEffect(() => {
-        getArticles()
+        getArticles(queryTopic)
         .then(({articles}) => {
             setArticles(articles)
             setIsLoading(false)
@@ -21,17 +23,20 @@ const ArticleList = () => {
             setIsError(true)
             setIsLoading(false)
         })
-    }, [])
+    }, [filter])
+
+   
 
     if(isLoading){
         return <h2> Loading... </h2>
     }
     if(isError) {
-        return <p> Woopsie, there's been an error! </p>
+        return <p> Oh no, there's been an error! Please try again </p>
     }
+  
     return (
         <div className="article-list-container">
-           <ArticleFilter />
+           <Filter setFilter={setFilter} />
             {articles.map((article) => {
                 return (
                 <Link key={article.article_id} to={`/articles/${article.article_id}`}>
