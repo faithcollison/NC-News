@@ -62,7 +62,7 @@ const SingleArticle = () => {
             <p> {article.comment_count} Comments </p>
             <CommentAdder article_id={article.article_id} setComments={setComments}/>
             <Collapsible descriptor="Comments" comments={comments}>
-                <CommentList comments={comments}/>
+                <CommentList article={article} setComments={setComments} comments={comments}/>
             </Collapsible>
         </div>
     )

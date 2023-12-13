@@ -6,18 +6,26 @@ import Header from './components/Header'
 import Nav from './components/Nav'
 import CommentList from './components/CommentList'
 import Home from './components/Home'
+import { UserProvider } from './components/contexts/UserContext'
+import Users from './components/Users'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
  return (
     <div>
-        <Header />
-        <Nav />
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<ArticleList />}/>
-            <Route path="/articles/:article_id" element={<SingleArticle />} />
-            {/* <Route path="/articles/:article_id/comments" element={<CommentList />} /> */}
-        </Routes>
+        <UserProvider>
+            <Header />
+            <Nav />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/articles" element={<ArticleList />}/>
+                <Route path="/users" element={<Users />} />
+                <Route path="/articles/:article_id" element={<SingleArticle />} />
+                <Route path="/articles/:article_id/comments" element={<CommentList />} />
+            </Routes>
+            <ToastContainer />
+        </UserProvider>
         
         
     </div>

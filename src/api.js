@@ -58,3 +58,19 @@ export function postComment(id, newCommentText) {
         return res.data.comment
     })
 }
+
+export function getUsers() {
+    return api
+    .get(`/users`)
+    .then((res) => {
+        return res.data.users
+    })
+} 
+
+export function deleteComment (id) {
+    return api
+    .delete(`/comments/${id}`)
+    .then((res) => {
+        return res.data.comment
+    })
+}

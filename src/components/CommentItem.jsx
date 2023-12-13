@@ -1,9 +1,44 @@
-const CommentItem = ({comment}) => {
+import { useContext, useState } from "react";
+import { UserContext } from "./contexts/UserContext";
+import { deleteComment } from "../api";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const CommentItem = ({article, comment, setComments, comments}) => {
+    const {user} = useContext(UserContext)
+    
+    const handleDelete = (id) => {
+        deleteComment(id)
+        .then(() => {
+            setComments((currComments) => {
+                const updatedCommentList = currComments.filter((comment) => comment.comment_id !== id);
+                article.comment_count -= 1;
+                toast.success("Your comment has been deleted", {
+                    position: toast.POSITION.TOP_CENTER,
+                  });
+                return updatedCommentList
+            })
+        })
+        .catch((err )=> {
+            console.log(err)
+            setComments((currComments) => {
+                toast.error("Message was not successfully deleted, please try again", {
+                    position: toast.POSITION.TOP_LEFT,
+                  })
+                return currComments})
+        })
+        
+    }
     return (
         <div>
-            <p className="comment-text"> {comment.body} </p>
             <p> Written by: {comment.author} </p>
-            <p> {comment.votes} Votes </p>
+            <p> {comment.body} </p>
+            <p> {comment.votes} votes </p>
+            {comment.author === user? (<>
+                <button className="delete-comment-button" onClick={() => handleDelete(comment.comment_id)}> Delete </button>
+            </>) : "" }
+            
         </div>
     )
 }
