@@ -10,6 +10,7 @@ import { UserProvider } from './components/contexts/UserContext'
 import Users from './components/Users'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Filter from './components/Filter'
 
 function App() {
  return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/articles" element={<ArticleList />}/>
                 <Route path="/users" element={<Users />} />
+                <Route path="/topics" element={<Filter />} />
                 <Route path="/articles/:article_id" element={<SingleArticle />} />
                 <Route path="/articles/:article_id/comments" element={<CommentList />} />
             </Routes>

@@ -2,9 +2,21 @@ import axios from 'axios'
 
 const api = axios.create({baseURL: `https://northcoder-news.onrender.com/api` })
 
-export function getArticles() {
+export function getTopics() {
     return api
-    .get(`/articles`)
+    .get(`/topics`)
+    .then((res) => {
+        return res.data.topics
+    })
+}
+
+export function getArticles(topic) {
+    return api
+    .get(`/articles`,{
+        params: {
+            topic: topic
+        }
+    })
     .then((res) => {
         return res.data
     })
@@ -74,3 +86,4 @@ export function deleteComment (id) {
         return res.data.comment
     })
 }
+
