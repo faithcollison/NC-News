@@ -8,6 +8,8 @@ import CommentList from './components/CommentList'
 import Home from './components/Home'
 import { UserProvider } from './components/contexts/UserContext'
 import Users from './components/Users'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
  return (
@@ -22,6 +24,7 @@ function App() {
                 <Route path="/articles/:article_id" element={<SingleArticle />} />
                 <Route path="/articles/:article_id/comments" element={<CommentList />} />
             </Routes>
+            <ToastContainer />
         </UserProvider>
         
         
