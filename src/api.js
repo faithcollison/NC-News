@@ -3,8 +3,9 @@ import axios from 'axios'
 const api = axios.create({baseURL: `https://northcoder-news.onrender.com/api` })
 
 export function getArticles(sort_by) {
-    // console.log(sort_by, "<<<")
+    console.log(sort_by, "<<<")
     if(sort_by) {
+        
         return api
         .get(`/articles`, {
             params:{
@@ -15,7 +16,7 @@ export function getArticles(sort_by) {
             return res.data
         })
     }
-    else{
+    else {
         return api
         .get(`/articles`)
         .then((res) => {

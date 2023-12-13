@@ -11,10 +11,11 @@ const ArticleList = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
     const [sortBy, setSortBy] = useState("")
+    const [order, setOrder] = useState("")
     
+    console.log(order)
     useEffect(() => {
-        // console.log(sortBy)
-        getArticles(sortBy)
+        getArticles( sortBy, order)
         .then(({articles}) => {   
             const commentCountAsNumber = articles.map((article) =>{
                         const countToNum = Number(article.comment_count)
@@ -28,7 +29,7 @@ const ArticleList = () => {
             setIsError(true)
             setIsLoading(false)
         })
-    }, [sortBy])
+    }, [sortBy, order])
 
     if(isLoading){
         return <h2> Loading... </h2>
@@ -39,7 +40,7 @@ const ArticleList = () => {
     return (
         <div className="article-list-container">
            <ArticleFilter />
-           <SortArticles setArticles={setArticles} articles={articles} setSortBy={setSortBy} />
+           <SortArticles setSortBy={setSortBy} setOrder={setOrder}/>
             {articles.map((article) => {
                 return (
                 <Link key={article.article_id} to={`/articles/${article.article_id}`}>
