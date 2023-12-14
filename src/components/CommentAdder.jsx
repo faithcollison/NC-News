@@ -44,7 +44,7 @@ const CommentAdder = ({article, setComments, article_id}) => {
     return (
         <div className="comment-adder">
         <form  onSubmit={handleSubmit}>
-            <label htmlFor="newComment"> Add a comment </label>
+            <div><label htmlFor="newComment"> Add a comment </label></div>
             <textarea className="comment-text-box" id="newComment" multiline="true" value={input} onChange={handleChange} /> 
             {input.length > 50? <p> Message is too long, try again </p> : <p> {`${50 - input.length} characters remaining`} </p>}
             <p> **Max 50 characters </p>
