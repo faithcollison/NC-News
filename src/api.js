@@ -3,38 +3,16 @@ import axios from 'axios'
 const api = axios.create({baseURL: `https://northcoder-news.onrender.com/api` })
 
 export function getArticles(sort_by, order) {
-    // console.log(sort_by, "<<< sortby")
-    // console.log(order, "<< order")
-    // if(sort_by && order) {
-        return api
-        .get(`/articles`, {
-            params:{
-                sort_by: sort_by || "created_at",
-                order: order || "desc"
-            }}
-        )
-        .then((res) => {
-            return res.data
-        })
-    // }
-    // else if(sort_by){
-    //     return api
-    //     .get(`/articles`, {
-    //         params:{
-    //             sort_by: sort_by
-    //         }}
-    //     )
-    //     .then((res) => {
-    //         return res.data
-    //     })
-    // }
-    // else {
-    //     return api
-    //     .get(`/articles`)
-    //     .then((res) => {
-    //         return res.data
-    //     })
-    // }
+    return api
+    .get(`/articles`, {
+        params:{
+            sort_by: sort_by || "created_at",
+            order: order || "desc"
+        }}
+    )
+    .then((res) => {
+        return res.data
+    })
 }
 
 
