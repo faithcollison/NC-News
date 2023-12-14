@@ -32,7 +32,7 @@ const ArticleList = () => {
     }
     if(isError) {
         return (<div>
-            <p> Oh no, there's been an error! Page doesn't exist.  </p>
+            <p> ERROR - Topic not found  </p>
             <p> Please try again </p>
         </div>)
     }

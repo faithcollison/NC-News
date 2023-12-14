@@ -20,13 +20,13 @@ function App() {
             <Header />
             <Nav />
             <Routes>
-                <Route path="/*" element={<Error message="Page not found!" />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/articles" element={<ArticleList />}/>
                 <Route path="/users" element={<Users />} />
                 <Route path="/articles?topic=:topic" element={<Filter />} />
                 <Route path="/articles/:article_id" element={<SingleArticle />} />
                 <Route path="/articles/:article_id/comments" element={<CommentList />} />
+                <Route path="/*" element={<Error message="Page not found!" />} />
             </Routes>
             <ToastContainer />
         </UserProvider>

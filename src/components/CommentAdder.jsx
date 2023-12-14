@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { postComment } from "../api"
 
-const CommentAdder = ({article, setComments, article_id}) => {
+const CommentAdder = ({ setComments, article_id}) => {
     // const [newComment, setNewComment] = useState("")
     const [success, setSuccess] = useState(undefined)
     const [fail, setFail] = useState(undefined)

@@ -1,7 +1,7 @@
 import CommentItem from "./CommentItem"
 
 const CommentList = ({article, comments, setComments}) => {
-// console.log(comments)
+
     return (
         <div className="comment-container">
             <ul className="comment-list">
