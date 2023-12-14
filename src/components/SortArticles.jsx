@@ -6,11 +6,6 @@ const SortArticles = ({articles, setOrder, setSortBy, searchParams}) => {
     const [sortInput, setSortInput] = useState("")
     let navigate = useNavigate()
 
-    // const handleSortBy = () => {
-    //         setSortBy(sortInput)
-    //         searchParams.set("sort_by", sortInput)
-    //         navigate(`/articles?${searchParams.toString()}`)
-    // }
     const handleOrderChange = (event) => {
        setOrderInput(event.target.value)     
     }
@@ -39,9 +34,6 @@ const SortArticles = ({articles, setOrder, setSortBy, searchParams}) => {
                 <option value="author" > Author </option>
             </select>
             <button onClick={handleSort}> Sort! </button>
-                        {/* <button className="sort-button" onClick={() => {handleSortBy("created_at")}}> Date </button>
-            <button className="sort-button" onClick={() => {handleSortBy("votes")}}> Votes </button>
-            <button className="sort-button" onClick={() => {handleSortBy("author")}}> Author </button> */}
             </div>
             <label htmlFor="order-results"> Order results:  </label> 
             <select className="order-bar" name="order" id="order-results" onChange={handleOrderChange}>
