@@ -13,7 +13,7 @@ const ArticleList = () => {
     const [sortBy, setSortBy] = useState("")
     const [order, setOrder] = useState("")
     
-    console.log(order)
+    // console.log(order)
     useEffect(() => {
         getArticles( sortBy, order)
         .then(({articles}) => {   

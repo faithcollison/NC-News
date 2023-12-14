@@ -1,46 +1,40 @@
 import { useState } from "react"
 
 const SortArticles = ({setOrder, setSortBy}) => {
-    const [checked, setChecked] = useState(true)
+    const [input, setInput] = useState("")
 
     const handleSortBy = (sort) => {
         if(sort){
+            // console.log(sort)
             setSortBy(sort)
         }
         else {setSortBy("")}
     }
 
-    const handleSelectDecr = () => {
-        // console.log(checked)
-        setChecked(!checked)
-        if(checked) {
-            
-            setOrder("desc")
-        }
-        else {
-            setOrder("")
-        }
+    const handleChange = (event) => {
+       setInput(event.target.value)     
     }
-    const handleSelectIncr = () => {
-        setChecked(!checked)
-        if(checked) {
-            setOrder("asc")
-        }
-        else {
-            setOrder("")
-        }
+    const handleOrder = () => {
+        // console.log(input)
+        setOrder(input)
     }
+
 
     return (
         <div>
             <p> Sort by: </p>
             <button onClick={() => {handleSortBy("created_at")}}> Date </button>
             <button onClick={() => {handleSortBy("votes")}}> Votes </button>
-            {/* <button onClick={() => {handleSortBy("comment_count")}}> Comments </button> */}
-            <input id="descendingOrder" type="checkbox" onChange={handleSelectDecr}/> 
-            <label htmlFor="descendingOrder"> High to Low </label> 
-            <input id="ascendingOrder" type="checkbox" onChange={handleSelectIncr}/>    
-            <label htmlFor="ascendingOrder"> Low to High </label>   
+            <button onClick={() => {handleSortBy("author")}}> Author </button>
+            
+            <label htmlFor="descendingOrder"> Order results:  </label> 
+            <select name="order" id="order-results" onChange={handleChange}>
+                <option> </option>
+                <option value="desc" > High to Low  </option>
+                <option value="asc" > Low to High </option>
+            </select>
+            <button onClick={handleOrder}> Order! </button>
+            
         </div>
     )
 }
