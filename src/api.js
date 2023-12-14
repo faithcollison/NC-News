@@ -31,6 +31,19 @@ export function getArticleById(id) {
     .then((res) => {
         return res.data
     })
+    .catch((error) => {
+            if(error.response) {
+                throw {status: error.response.status,
+                message: error.response.data.msg}
+            }
+            else if (error.request){
+                console.log(error.request);
+            }
+            else {
+                console.log('Error', error.message);
+              }
+        }
+    )
 }
 
 export function getArticleComments(id) {
@@ -38,6 +51,18 @@ export function getArticleComments(id) {
     .get(`/articles/${id}/comments`)
     .then((res) => {
         return res.data
+    })
+    .catch((error) => {
+        if(error.response) {
+            throw {status: error.response.status,
+            message: error.response.data.msg}
+        }
+        else if (error.request){
+            console.log(error.request);
+        }
+        else {
+            console.log('Error', error.message);
+          }
     })
 }
 

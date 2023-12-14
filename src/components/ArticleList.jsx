@@ -33,7 +33,10 @@ const ArticleList = () => {
         return <h2> Loading... </h2>
     }
     if(isError) {
-        return <p> Oh no, there's been an error! Please try again </p>
+        return (<div>
+            <p> ERROR - Topic not found  </p>
+            <p> Please try again </p>
+        </div>)
     }
   
     return (

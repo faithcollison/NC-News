@@ -11,6 +11,7 @@ import Users from './components/Users'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Filter from './components/Filter'
+import Error from './components/Error'
 
 function App() {
  return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/articles?topic=:topic" element={<Filter />} />
                 <Route path="/articles/:article_id" element={<SingleArticle />} />
                 <Route path="/articles/:article_id/comments" element={<CommentList />} />
+                <Route path="/*" element={<Error message="Page not found!" />} />
             </Routes>
             <ToastContainer />
         </UserProvider>

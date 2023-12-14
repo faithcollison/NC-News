@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom"
 import Collapsible from "./Collapsible"
 import CommentList from "./CommentList"
 import { incrVoteCount, decrVoteCount, getArticleComments, getArticleById, getTopics } from "../api"
+import Error from "./Error"
+
 import CommentAdder from "./CommentAdder"
 
 const SingleArticle = () => {
@@ -10,22 +12,9 @@ const SingleArticle = () => {
     const [comments, setComments] = useState([])
     const [votes, setVotes] = useState(0)
     const {article_id} = useParams()
-   
-
-    useEffect(() => {
-        getArticleById(article_id)
-        .then((data) => {
-            setArticle(data.article)
-            setVotes(data.article.votes)
-        })
-    }, [])
-    
-    useEffect(() => {
-        getArticleComments(article_id)
-        .then((data) => {
-            setComments(data.comments)
-        })
-    }, [])
+    const [apiError, setApiError] = useState(null)
+    const date = new Date(article.created_at).toString()
+    const dateStr = date.replace(/\sGMT.*/, "")
 
     const upVote = (article_id) => {
         setVotes((prevVotes) => prevVotes + 1)
@@ -44,9 +33,33 @@ const SingleArticle = () => {
         })
     }
 
-    const date = new Date(article.created_at).toString()
-    const dateStr = date.replace(/\sGMT.*/, "")
+    useEffect(() => {
+        getArticleById(article_id)
+        .then((data) => {
+            setArticle(data.article)
+            setVotes(data.article.votes)
+        })
+        .catch((err) => {
+            setApiError(err)
+            setArticle({})
+        })
+    }, [])
+
+    useEffect(() => {
+        getArticleComments(article_id)
+        .then((data) => {
+            setComments(data.comments)
+        })
+        .catch((err) => {
+            setApiError(err)
+            setArticle({})
+        })
+    }, [])
     
+    if(apiError) {
+        return <Error message={apiError.message} />
+    }
+  
     return (
         <div className="single-article-container">
             <Link className="navigation-link "to="/articles"> Back to all articles </Link>
@@ -59,7 +72,7 @@ const SingleArticle = () => {
             <button className="like-vote-button" onClick={() => upVote(article.article_id)}> Like </button>
             <button className="dislike-vote-button" onClick={() => downVote(article.article_id)}> Dislike </button>
             <p> {article.comment_count} Comments </p>
-            <CommentAdder article_id={article.article_id} setComments={setComments}/>
+            <CommentAdder article={article} article_id={article.article_id} setComments={setComments}/>
             <Collapsible descriptor="Comments" comments={comments}>
                 <CommentList article={article} setComments={setComments} comments={comments}/>
             </Collapsible>

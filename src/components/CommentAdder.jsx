@@ -1,17 +1,21 @@
 import { useState } from "react"
 import { postComment } from "../api"
 
-const CommentAdder = ({setComments, article_id}) => {
-    const [newComment, setNewComment] = useState("")
+const CommentAdder = ({ setComments, article_id}) => {
+    // const [newComment, setNewComment] = useState("")
     const [success, setSuccess] = useState(undefined)
     const [fail, setFail] = useState(undefined)
     const [isDisabled, setIsDisabled] = useState(false)
+    const [input, setInput] = useState("")
 
-    
+    const handleChange = (event) => {
+        setInput(event.target.value)
+    }
 
     const handleSubmit = (event) => {
-    if(newComment.length > 0){
+    if(input.length > 0){
         event.preventDefault();
+    
         setFail(false)
         setSuccess(true)
         setIsDisabled(true)
@@ -19,10 +23,10 @@ const CommentAdder = ({setComments, article_id}) => {
             setSuccess(false);
             setIsDisabled(false);
             }, 1000);
-        postComment(article_id, newComment)
+        postComment(article_id, input)
         .then((newCommentFromApi) => {
             setIsDisabled(false)
-            setNewComment("")
+            setInput("")
             setComments((currComments) => {
                 return [newCommentFromApi, ...currComments]
             })
@@ -40,9 +44,11 @@ const CommentAdder = ({setComments, article_id}) => {
     return (
         <div className="comment-adder">
         <form  onSubmit={handleSubmit}>
-            <label htmlFor="newComment"> Add a comment </label>
-            <textarea className="comment-text-box" id="newComment" multiline="true" value={newComment} onChange={(event) => setNewComment(event.target.value)}> </textarea>
-            <button className="comment-adder-button" disabled={isDisabled}>
+            <div><label htmlFor="newComment"> Add a comment </label></div>
+            <textarea className="comment-text-box" id="newComment" multiline="true" value={input} onChange={handleChange} /> 
+            {input.length > 50? <p> Message is too long, try again </p> : <p> {`${50 - input.length} characters remaining`} </p>}
+            <p> **Max 50 characters </p>
+            <button className="comment-adder-button" disabled={isDisabled || input.length>50}>
                 Add
             </button>
             { success ? "✅" : ""}

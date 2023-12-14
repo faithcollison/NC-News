@@ -103,17 +103,15 @@
 .comment-adder {
   margin:30px;
   display: flex;
-  /* flex-direction: row;
-  flex-wrap: wrap; */
-  justify-content: space-around;
-  color:red
-
+  justify-content: center;
+  align-items: center;
 }
 .comment-text-box{
-  width: 70vw;
-  height: 10vh;
-  margin:10px;
-  padding:10px;
+  width: 100%; /* Set the width to 100% to make it responsive */
+  max-width: 400px; /* Set a maximum width to prevent it from getting too wide */
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box
 }
 
 .comment-adder-button{
