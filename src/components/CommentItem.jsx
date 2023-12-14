@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
 import { deleteComment } from "../api";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const CommentItem = ({article, comment, setComments, comments}) => {
+const CommentItem = ({article, comment, setComments}) => {
     const {user} = useContext(UserContext)
     
     const handleDelete = (id) => {
