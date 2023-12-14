@@ -1,23 +1,24 @@
 import { useState } from "react"
+import { useNavigate} from "react-router-dom"
 
-const SortArticles = ({setOrder, setSortBy}) => {
+const SortArticles = ({setOrder, setSortBy, searchParams}) => {
     const [input, setInput] = useState("")
 
+    let navigate = useNavigate()
     const handleSortBy = (sort) => {
-        if(sort){
-            // console.log(sort)
             setSortBy(sort)
-        }
-        else {setSortBy("")}
+            searchParams.set("sort_by", sort)
+            navigate(`/articles?${searchParams.toString()}`)
     }
 
     const handleChange = (event) => {
        setInput(event.target.value)     
     }
     const handleOrder = () => {
-        // console.log(input)
         setOrder(input)
-    }
+        searchParams.set("order", input)
+        navigate(`/articles?${searchParams.toString()}`)
+}
 
 
     return (

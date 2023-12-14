@@ -1,28 +1,25 @@
 import { useState, useEffect} from "react"
-import { Link } from "react-router-dom"
+import { Link, useSearchParams} from "react-router-dom"
 import { getArticles } from "../api"
 import ArticleFilter from "./ArticleFilter"
 import ArticleItem from "./ArticleItem"
 import SortArticles from "./SortArticles"
 
 const ArticleList = () => {
-    // const [filter, setFilter] = useState("")
+    const searchParams = new URLSearchParams(window.location.search);
+
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
-    const [sortBy, setSortBy] = useState("")
-    const [order, setOrder] = useState("")
+    const [sortBy, setSortBy] = useState(searchParams.get("sort_by") || "")
+    const [order, setOrder] = useState(searchParams.get("order") || "")
     
-    // console.log(order)
     useEffect(() => {
         getArticles( sortBy, order)
         .then(({articles}) => {   
-            const commentCountAsNumber = articles.map((article) =>{
-                        const countToNum = Number(article.comment_count)
-                        return ({...article, comment_count : countToNum })
-                    } )
-            setArticles(commentCountAsNumber)
+            setArticles(articles)
             setIsLoading(false)
+            setIsError(false)
         })
         .catch((err) => {
             console.log(err)
@@ -40,7 +37,7 @@ const ArticleList = () => {
     return (
         <div className="article-list-container">
            <ArticleFilter />
-           <SortArticles setSortBy={setSortBy} setOrder={setOrder}/>
+           <SortArticles searchParams={searchParams} setSortBy={setSortBy} setOrder={setOrder}/>
             {articles.map((article) => {
                 return (
                 <Link key={article.article_id} to={`/articles/${article.article_id}`}>
