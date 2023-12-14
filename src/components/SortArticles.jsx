@@ -1,16 +1,15 @@
 import { useState } from "react"
 import { useNavigate} from "react-router-dom"
 
-const SortArticles = ({setOrder, setSortBy, searchParams}) => {
+const SortArticles = ({articles, setOrder, setSortBy, searchParams}) => {
     const [input, setInput] = useState("")
-
     let navigate = useNavigate()
+
     const handleSortBy = (sort) => {
             setSortBy(sort)
             searchParams.set("sort_by", sort)
             navigate(`/articles?${searchParams.toString()}`)
     }
-
     const handleChange = (event) => {
        setInput(event.target.value)     
     }
@@ -18,18 +17,18 @@ const SortArticles = ({setOrder, setSortBy, searchParams}) => {
         setOrder(input)
         searchParams.set("order", input)
         navigate(`/articles?${searchParams.toString()}`)
-}
-
+    }
 
     return (
         <div>
-            <p> Sort by: </p>
-            <button onClick={() => {handleSortBy("created_at")}}> Date </button>
-            <button onClick={() => {handleSortBy("votes")}}> Votes </button>
-            <button onClick={() => {handleSortBy("author")}}> Author </button>
-            
+            <div>
+            <p> Sort</p>
+            <button className="sort-button" onClick={() => {handleSortBy("created_at")}}> Date </button>
+            <button className="sort-button" onClick={() => {handleSortBy("votes")}}> Votes </button>
+            <button className="sort-button" onClick={() => {handleSortBy("author")}}> Author </button>
+            </div>
             <label htmlFor="descendingOrder"> Order results:  </label> 
-            <select name="order" id="order-results" onChange={handleChange}>
+            <select className="order-bar" name="order" id="order-results" onChange={handleChange}>
                 <option> </option>
                 <option value="desc" > High to Low  </option>
                 <option value="asc" > Low to High </option>
@@ -40,3 +39,5 @@ const SortArticles = ({setOrder, setSortBy, searchParams}) => {
     )
 }
 export default SortArticles;
+// const sortedArticles = [...articles].sort((a, b) => a.comment_count - b.comment_count)
+// console.log(sortedArticles)
