@@ -10,17 +10,20 @@ export function getTopics() {
     })
 }
 
-export function getArticles(filter) {
+export function getArticles(filter, sort_by, order) {
     return api
     .get(`/articles`,{
         params: {
-            topic: filter
-        }
-    })
+            topic: filter,
+            sort_by: sort_by || "created_at",
+            order: order || "desc"
+        }}
+    )
     .then((res) => {
         return res.data
     })
 }
+
 
 export function getArticleById(id) {
     return api
