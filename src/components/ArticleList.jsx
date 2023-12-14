@@ -1,21 +1,22 @@
 import { useState, useEffect} from "react"
-import { Link, useSearchParams} from "react-router-dom"
+import { Link} from "react-router-dom"
 import { getArticles } from "../api"
-import ArticleFilter from "./ArticleFilter"
+import Filter from "./Filter"
 import ArticleItem from "./ArticleItem"
 import SortArticles from "./SortArticles"
 
 const ArticleList = () => {
     const searchParams = new URLSearchParams(window.location.search);
-
     const [articles, setArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
+    
+    const [filter, setFilter] = useState(searchParams.get("filter") ||"")
     const [sortBy, setSortBy] = useState(searchParams.get("sort_by") || "")
     const [order, setOrder] = useState(searchParams.get("order") || "")
     
     useEffect(() => {
-        getArticles( sortBy, order)
+        getArticles(filter, sortBy, order)
         .then(({articles}) => {   
             setArticles(articles)
             setIsLoading(false)
@@ -26,17 +27,18 @@ const ArticleList = () => {
             setIsError(true)
             setIsLoading(false)
         })
-    }, [sortBy, order])
+    }, [filter, sortBy, order])
 
     if(isLoading){
         return <h2> Loading... </h2>
     }
     if(isError) {
-        return <p> Woopsie, there's been an error! </p>
+        return <p> Oh no, there's been an error! Please try again </p>
     }
+  
     return (
         <div className="article-list-container">
-           <ArticleFilter />
+           <Filter searchParams={searchParams} setFilter={setFilter} />
            <SortArticles articles={articles} searchParams={searchParams} setSortBy={setSortBy} setOrder={setOrder}/>
             {articles.map((article) => {
                 return (

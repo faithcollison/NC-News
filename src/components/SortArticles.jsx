@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate} from "react-router-dom"
 
-const SortArticles = ({articles, setOrder, setSortBy, searchParams}) => {
+const SortArticles = ({setOrder, setSortBy, searchParams}) => {
     const [orderInput, setOrderInput] = useState("")
     const [sortInput, setSortInput] = useState("")
     let navigate = useNavigate()

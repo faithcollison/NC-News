@@ -189,6 +189,22 @@ justify-content: space-evenly;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+.filter-bar{
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-around;
+}
+.filter-bar-item {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0 5px;
+}
+.filter-button{
+  padding:5px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0 20px;
+  background-color: rgb(248, 228, 204);
+}
 .sort-button {
   margin: 20px;
   width: 15vw;
