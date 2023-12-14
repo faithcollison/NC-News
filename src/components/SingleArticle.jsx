@@ -60,7 +60,7 @@ const SingleArticle = () => {
             <button className="like-vote-button" onClick={() => upVote(article.article_id)}> Like </button>
             <button className="dislike-vote-button" onClick={() => downVote(article.article_id)}> Dislike </button>
             <p> {article.comment_count} Comments </p>
-            <CommentAdder article_id={article.article_id} setComments={setComments}/>
+            <CommentAdder article={article} article_id={article.article_id} setComments={setComments}/>
             <Collapsible descriptor="Comments" comments={comments}>
                 <CommentList article={article} setComments={setComments} comments={comments}/>
             </Collapsible>

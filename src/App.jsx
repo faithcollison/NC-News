@@ -19,6 +19,7 @@ function App() {
             <Header />
             <Nav />
             <Routes>
+                <Route path="/*" element={<Error message="Route not found!" />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/articles" element={<ArticleList />}/>
                 <Route path="/users" element={<Users />} />
