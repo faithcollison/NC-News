@@ -39,7 +39,7 @@ const ArticleList = () => {
     return (
         <div className="article-list-container">
            <Filter searchParams={searchParams} setFilter={setFilter} />
-           <SortArticles articles={articles} searchParams={searchParams} setSortBy={setSortBy} setOrder={setOrder}/>
+           <SortArticles searchParams={searchParams} setSortBy={setSortBy} setOrder={setOrder}/>
             {articles.map((article) => {
                 return (
                 <Link key={article.article_id} to={`/articles/${article.article_id}`}>

@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom"
 import Collapsible from "./Collapsible"
 import CommentList from "./CommentList"
 import { incrVoteCount, decrVoteCount, getArticleComments, getArticleById, getTopics } from "../api"
-
 import CommentAdder from "./CommentAdder"
 
 const SingleArticle = () => {
