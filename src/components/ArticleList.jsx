@@ -31,7 +31,10 @@ const ArticleList = () => {
         return <h2> Loading... </h2>
     }
     if(isError) {
-        return <p> Oh no, there's been an error! Please try again </p>
+        return (<div>
+            <p> Oh no, there's been an error! Page doesn't exist.  </p>
+            <p> Please try again </p>
+        </div>)
     }
   
     return (
