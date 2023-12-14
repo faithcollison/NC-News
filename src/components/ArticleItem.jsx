@@ -8,6 +8,7 @@ const ArticleItem = ({article}) => {
                 <h3 className="article-text"> {article.title} </h3>
                 <img className="article-img-url" src={article.article_img_url} />
                 <p> {dateStr} </p>
+                <p> {article.votes} votes </p>
             </div>
         </div>
         )
