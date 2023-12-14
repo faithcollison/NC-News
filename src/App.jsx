@@ -11,6 +11,7 @@ import Users from './components/Users'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Filter from './components/Filter'
+import Error from './components/Error'
 
 function App() {
  return (
@@ -19,7 +20,7 @@ function App() {
             <Header />
             <Nav />
             <Routes>
-                <Route path="/*" element={<Error message="Route not found!" />} />
+                <Route path="/*" element={<Error message="Page not found!" />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/articles" element={<ArticleList />}/>
                 <Route path="/users" element={<Users />} />
