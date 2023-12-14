@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getTopics } from "../api"
 import { Link } from "react-router-dom";
 
-const Filter = ({setFilter}) => {
+const Filter = ({searchParams, setFilter}) => {
     const [topics, setTopics] = useState([])
     
     useEffect(() => {
@@ -16,10 +16,8 @@ const Filter = ({setFilter}) => {
     }, [])
 
     const handleTopicSelect = (topic) => {
-        if(topic) {
             setFilter(topic)
-        }
-        else {setFilter("")}
+            searchParams.set("topic", topic)
     }
     
 

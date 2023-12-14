@@ -203,3 +203,13 @@ justify-content: space-evenly;
   margin:0 20px;
   background-color: rgb(248, 228, 204);
 }
+.sort-button {
+  margin: 20px;
+  width: 15vw;
+  background-color: rgb(218, 183, 199);
+}
+.order-bar{
+  width: 20vw;
+  margin: 10px;
+  padding: 5px;
+}
