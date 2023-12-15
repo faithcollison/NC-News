@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Button } from "react-bootstrap"
 
 const Collapsible = ({children, descriptor, comments}) => {
     const [isHidden, setIsHidden] = useState(true)
@@ -12,7 +13,7 @@ const Collapsible = ({children, descriptor, comments}) => {
             
             {comments.length === 0 ? ("No comments for this article") : (
             <>
-            <button onClick={hidden}> {isHidden? "Show" : "Hide"} {descriptor} </button> 
+             <Button variant="secondary" onClick={hidden}>{isHidden? "Show" : "Hide"} {descriptor}</Button>{' '}
             {isHidden? null : children}
             </> 
             )}

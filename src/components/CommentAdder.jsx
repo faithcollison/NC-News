@@ -1,8 +1,10 @@
 import { useState } from "react"
+import { Button } from "react-bootstrap"
 import { postComment } from "../api"
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const CommentAdder = ({ setComments, article_id}) => {
-    // const [newComment, setNewComment] = useState("")
     const [success, setSuccess] = useState(undefined)
     const [fail, setFail] = useState(undefined)
     const [isDisabled, setIsDisabled] = useState(false)
@@ -42,18 +44,26 @@ const CommentAdder = ({ setComments, article_id}) => {
     }
 
     return (
-        <div className="comment-adder">
-        <form  onSubmit={handleSubmit}>
-            <div><label htmlFor="newComment"> Add a comment </label></div>
-            <textarea className="comment-text-box" id="newComment" multiline="true" value={input} onChange={handleChange} /> 
-            {input.length > 50? <p> Message is too long, try again </p> : <p> {`${50 - input.length} characters remaining`} </p>}
-            <p> **Max 50 characters </p>
-            <button className="comment-adder-button" disabled={isDisabled || input.length>50}>
-                Add
-            </button>
-            { success ? "✅" : ""}
-            { fail ? "Please enter a comment" : ""}
-        </form>
+        <div className="comment-adder-submit">
+            <Form onSubmit={handleSubmit}> 
+                <div >
+                    <div>
+                    <label htmlFor="newComment"> Add a comment </label>
+                        <textarea className="comment-text-box" id="newComment" multiline="true" value={input} onChange={handleChange} />
+                    </div>
+                <div className="warning-text">
+                    {input.length > 50? <p> Message is too long, try again </p> : <p> {`${50 - input.length} characters remaining`} </p>}
+                </div>
+                    <div className="comment-adder-button" >
+                        <Button variant="primary" type="submit" disabled={isDisabled || input.length>50}> Add </Button>{' '}
+                    </div>
+                </div>
+                <div>
+                    { success ? "✅" : ""}
+                    { fail ? "Please enter a comment" : ""}
+                </div>
+            {/* </form> */}
+            </Form>
         </div>
     )
 }

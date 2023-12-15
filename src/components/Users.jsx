@@ -20,7 +20,7 @@ const Users = () => {
     
     return(
         <div >
-        <section>
+            <h3 className="user-title"> Click your user avatar! </h3>
             <ul  className="user-list">
                 {users.map((user) => {
                     return(
@@ -35,7 +35,6 @@ const Users = () => {
                     )
                 })}
             </ul>
-            </section>
         </div>
     )
 }

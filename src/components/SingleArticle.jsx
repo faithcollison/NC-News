@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import Collapsible from "./Collapsible"
 import CommentList from "./CommentList"
-import { incrVoteCount, decrVoteCount, getArticleComments, getArticleById, getTopics } from "../api"
+import { incrVoteCount, decrVoteCount, getArticleComments, getArticleById } from "../api"
 import Error from "./Error"
+import { Button } from "react-bootstrap"
 
 import CommentAdder from "./CommentAdder"
 
@@ -14,7 +15,7 @@ const SingleArticle = () => {
     const {article_id} = useParams()
     const [apiError, setApiError] = useState(null)
     const date = new Date(article.created_at).toString()
-    const dateStr = date.replace(/\sGMT.*/, "")
+    const dateStr = date.replace(/\d+:\d+:\d+\sGMT.*/, "")
 
     const upVote = (article_id) => {
         setVotes((prevVotes) => prevVotes + 1)
@@ -62,20 +63,30 @@ const SingleArticle = () => {
   
     return (
         <div className="single-article-container">
-            <Link className="navigation-link "to="/articles"> Back to all articles </Link>
-            <h2 className="single-article-text"> {article.title} </h2>
-            <p className="single-article-text"> {article.body} </p>
-            <img className="single-article-img" src={article.article_img_url} />
-            <p className="single-article-text"> Written by {article.author} </p>
-            <p> Created at {dateStr} </p>
-            <p> {votes} Votes </p>
-            <button className="like-vote-button" onClick={() => upVote(article.article_id)}> Like </button>
-            <button className="dislike-vote-button" onClick={() => downVote(article.article_id)}> Dislike </button>
-            <p> {article.comment_count} Comments </p>
-            <CommentAdder article={article} article_id={article.article_id} setComments={setComments}/>
-            <Collapsible descriptor="Comments" comments={comments}>
-                <CommentList article={article} setComments={setComments} comments={comments}/>
-            </Collapsible>
+            <Link className="link backwards-link"to="/articles"> <h4> Back to all articles </h4> </Link>
+            <div className="extra-text-info">
+                <p> Written by {article.author} </p>
+                <p> Created at {dateStr} </p>
+            </div>
+            <div>
+                <h2 className="single-article-text"> {article.title} </h2> 
+                <p className="single-article-text"> {article.body} </p>
+                <img className="single-article-img" src={article.article_img_url} />
+            </div>
+            <div className="votes-container">
+                    <div><Button variant="info" onClick={() => upVote(article.article_id)} >⬆ </Button>{' '}</div>
+                    <div>
+                        <p> {votes} </p>
+                    </div>
+                    <div><Button variant="info" onClick={() => downVote(article.article_id)} >⬇ </Button>{' '}</div>
+            </div>
+            <div className="comment-container">
+                <CommentAdder article={article} article_id={article.article_id} setComments={setComments}/>
+                <p> {article.comment_count} Comments </p>
+                <Collapsible descriptor="Comments" comments={comments}>
+                    <CommentList article={article} setComments={setComments} comments={comments}/>
+                </Collapsible>
+            </div>
         </div>
     )
 }

@@ -12,13 +12,14 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Filter from './components/Filter'
 import Error from './components/Error'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
  return (
     <div>
         <UserProvider>
             <Header />
-            <Nav />
+            
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/articles" element={<ArticleList />}/>

@@ -45,7 +45,7 @@ const ArticleList = () => {
            <SortArticles searchParams={searchParams} setSortBy={setSortBy} setOrder={setOrder}/>
             {articles.map((article) => {
                 return (
-                <Link key={article.article_id} to={`/articles/${article.article_id}`}>
+                <Link className="link" key={article.article_id} to={`/articles/${article.article_id}`}>
                     <ArticleItem key={article.article_id} article={article} /> 
                 </Link>
                 )

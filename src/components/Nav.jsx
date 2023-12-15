@@ -6,16 +6,19 @@ const Nav = () => {
     const {user} = useContext(UserContext)
     return (
         <nav className="nav-bar">
-            <Link to="/">
+            <Link to="/" className="link">
                 <h2> Home </h2>
             </Link>
-            <Link to="/articles">
+            <Link  className="link"to="/articles">
                 <h2> Articles </h2>
             </Link>
-            <Link to="/users">
+            <Link className="link" to="/users">
                 <h2> Users </h2>
             </Link>
-            <p> Logged in: {user}  </p>
+            <div className="logged-in">
+            <p > Active User:   </p>
+            <p> {user} </p>
+            </div>
         </nav>
     )
 }

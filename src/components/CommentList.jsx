@@ -7,7 +7,9 @@ const CommentList = ({article, comments, setComments}) => {
             <ul className="comment-list">
                 {comments.map((comment) => {
                     return (
-                        <li className="comment-item" key={comment.comment_id}><CommentItem key={comment.comment_id} comment={comment} setComments={setComments} article={article}/> </li>
+                        <li className="comment-item" key={comment.comment_id}>
+                            <CommentItem key={comment.comment_id} comment={comment} setComments={setComments} article={article}/> 
+                        </li>
                     )
                 })}
             </ul>

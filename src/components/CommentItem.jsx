@@ -3,12 +3,15 @@ import { UserContext } from "./contexts/UserContext";
 import { deleteComment } from "../api";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Button } from "react-bootstrap";
 
 
 
 const CommentItem = ({article, comment, setComments}) => {
     const {user} = useContext(UserContext)
-    
+    const commentDate = new Date(comment.created_at).toString()
+    const commentDateStr = commentDate.replace(/\d+:\d+:\d+\sGMT.*/, "")
+   
     const handleDelete = (id) => {
         deleteComment(id)
         .then(() => {
@@ -31,15 +34,19 @@ const CommentItem = ({article, comment, setComments}) => {
         })
         
     }
+
     return (
         <div>
-            <p> Written by: {comment.author} </p>
-            <p> {comment.body} </p>
-            <p> {comment.votes} votes </p>
-            {comment.author === user? (<>
-                <button className="delete-comment-button" onClick={() => handleDelete(comment.comment_id)}> Delete </button>
-            </>) : "" }
-            
+            <div className="comment-item-info">
+                <p> Written by {comment.author} at {commentDateStr}</p>
+            </div>
+                <p> {comment.body} </p>
+            <div className="comment-votes-box">
+                <p className="votes"> {comment.votes} votes </p>
+                {comment.author === user? (<>
+                    <Button variant="danger" onClick={() => handleDelete(comment.comment_id)}>Delete</Button>{' '}
+                    </>) : "" }
+            </div>
         </div>
     )
 }
