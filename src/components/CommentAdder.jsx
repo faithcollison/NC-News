@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button } from "react-bootstrap"
 import { postComment } from "../api"
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+
 
 const CommentAdder = ({ setComments, article_id}) => {
     const [success, setSuccess] = useState(undefined)
@@ -62,7 +62,6 @@ const CommentAdder = ({ setComments, article_id}) => {
                     { success ? "✅" : ""}
                     { fail ? "Please enter a comment" : ""}
                 </div>
-            {/* </form> */}
             </Form>
         </div>
     )
