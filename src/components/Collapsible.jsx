@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 
-const Collapsible = ({ children, descriptor, comments }) => {
+export const Collapsible = ({ children, descriptor, comments }) => {
   const [isHidden, setIsHidden] = useState(true);
 
   function hidden() {
@@ -24,4 +24,4 @@ const Collapsible = ({ children, descriptor, comments }) => {
   );
 };
 
-export default Collapsible;
+

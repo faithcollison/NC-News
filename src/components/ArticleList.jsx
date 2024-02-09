@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { getArticles } from "../api";
-import Filter from "./Filter";
-import ArticleItem from "./ArticleItem";
-import SortArticles from "./SortArticles";
+import { ArticleItem, Filter, SortArticles } from "./index";
 
-const ArticleList = () => {
+export const ArticleList = () => {
   const searchParams = new URLSearchParams(window.location.search);
 
   const [articles, setArticles] = useState([]);
@@ -65,4 +63,4 @@ const ArticleList = () => {
   );
 };
 
-export default ArticleList;
+

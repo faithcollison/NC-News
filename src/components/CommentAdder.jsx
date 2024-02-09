@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 
 import { postComment } from "../api";
 
-const CommentAdder = ({ setComments, article_id }) => {
+export const CommentAdder = ({ setComments, article_id }) => {
   const [success, setSuccess] = useState(undefined);
   const [fail, setFail] = useState(undefined);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -82,4 +82,3 @@ const CommentAdder = ({ setComments, article_id }) => {
   );
 };
 
-export default CommentAdder;

@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-import Collapsible from "./Collapsible";
-import CommentList from "./CommentList";
-import Error from "./Error";
-import CommentAdder from "./CommentAdder";
+import { Collapsible, CommentAdder, CommentList, Error } from "./index";
 import {
   incrVoteCount,
   decrVoteCount,
@@ -13,7 +10,7 @@ import {
   getArticleById,
 } from "../api";
 
-const SingleArticle = () => {
+export const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [votes, setVotes] = useState(0);
@@ -114,4 +111,4 @@ const SingleArticle = () => {
   );
 };
 
-export default SingleArticle;
+

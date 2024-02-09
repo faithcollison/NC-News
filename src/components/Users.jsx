@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 import { getUsers } from "../api";
 
-const Users = () => {
+export const Users = () => {
   const [users, setUsers] = useState([]);
   const { setUser } = useContext(UserContext);
 
@@ -40,4 +40,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+

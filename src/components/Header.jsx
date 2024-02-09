@@ -1,6 +1,6 @@
-import Nav from "./Nav";
+import { Nav } from "./index"
 
-const Header = () => {
+export const Header = () => {
   return (
     <div className="header">
       <header>
@@ -11,4 +11,3 @@ const Header = () => {
   );
 };
 
-export default Header;

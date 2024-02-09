@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { UserContext } from "./contexts/UserContext";
 
-const Nav = () => {
+export const Nav = () => {
   const { user } = useContext(UserContext);
   return (
     <nav className="nav-bar">
@@ -24,4 +24,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+

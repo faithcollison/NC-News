@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import { deleteComment } from "../api";
 import { UserContext } from "./contexts/UserContext";
 
-const CommentItem = ({ article, comment, setComments }) => {
+export const CommentItem = ({ article, comment, setComments }) => {
   const { user } = useContext(UserContext);
   const commentDate = new Date(comment.created_at).toString();
   const commentDateStr = commentDate.replace(/\d+:\d+:\d+\sGMT.*/, "");
@@ -67,4 +67,4 @@ const CommentItem = ({ article, comment, setComments }) => {
   );
 };
 
-export default CommentItem;
+

@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 import { getTopics } from "../api";
 
-const Filter = ({ searchParams, setFilter }) => {
+export const Filter = ({ searchParams, setFilter }) => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const Filter = ({ searchParams, setFilter }) => {
   );
 };
 
-export default Filter;
+

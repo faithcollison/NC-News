@@ -1,6 +1,6 @@
-import CommentItem from "./CommentItem";
+import { CommentItem } from './index'
 
-const CommentList = ({ article, comments, setComments }) => {
+export const CommentList = ({ article, comments, setComments }) => {
   return (
     <div className="comment-container">
       <ul className="comment-list">
@@ -21,4 +21,3 @@ const CommentList = ({ article, comments, setComments }) => {
   );
 };
 
-export default CommentList;

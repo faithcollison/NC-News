@@ -1,4 +1,4 @@
-const ArticleItem = ({ article }) => {
+export const ArticleItem = ({ article }) => {
   const date = new Date(article.created_at).toString();
   const dateStr = date.replace(/\d+:\d+:\d+\sGMT.*/, "");
   return (
@@ -15,4 +15,4 @@ const ArticleItem = ({ article }) => {
     </div>
   );
 };
-export default ArticleItem;
+

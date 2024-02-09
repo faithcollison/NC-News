@@ -1,4 +1,4 @@
-const Error = ({ message }) => {
+export const Error = ({ message }) => {
   return (
     <div>
       <h2> ERROR </h2>
@@ -7,4 +7,4 @@ const Error = ({ message }) => {
   );
 };
 
-export default Error;
+
