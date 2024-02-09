@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { getTopics } from "../api";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+
+import { getTopics } from "../api";
 
 const Filter = ({ searchParams, setFilter }) => {
   const [topics, setTopics] = useState([]);
@@ -43,4 +44,5 @@ const Filter = ({ searchParams, setFilter }) => {
     </div>
   );
 };
+
 export default Filter;

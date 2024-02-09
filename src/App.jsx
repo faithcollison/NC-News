@@ -1,17 +1,20 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import ArticleList from "./components/ArticleList";
-import SingleArticle from "./components/SingleArticle";
-import Header from "./components/Header";
-import CommentList from "./components/CommentList";
-import Home from "./components/Home";
-import { UserProvider } from "./components/contexts/UserContext";
-import Users from "./components/Users";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Filter from "./components/Filter";
-import Error from "./components/Error";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import {
+  ArticleList,
+  SingleArticle,
+  Header,
+  CommentList,
+  Home,
+  Users,
+  Filter,
+  Error,
+} from "./components";
+import { UserProvider } from "./components/contexts/UserContext";
 
 function App() {
   return (
